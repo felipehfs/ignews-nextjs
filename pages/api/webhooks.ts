@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Readable } from "stream";
 import Stripe from "stripe";
 import { stripe } from "../../src/services/stripe";
-import { saveSubscription } from "../_lib/manageSubscription";
+import { saveSubscription } from "../../src/lib/manageSubscription";
 
 async function buffer(readable: Readable) {
     const chunks = [];
@@ -28,7 +28,7 @@ const relevantEvents = new Set([
     'customer.subscription.deleted',
 ]);
 
-export default async function webhooks(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "POST") {
         console.log("Evento recebido");
         const buf = await buffer(req);

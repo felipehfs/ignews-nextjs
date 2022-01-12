@@ -22,6 +22,9 @@
     "sass": "^1.43.5",
     "stripe": "^8.193.0"
   },
+  "browser":{
+    "child_process": false
+  }, 
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/node": "^16.11.10",
